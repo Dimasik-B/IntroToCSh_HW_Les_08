@@ -26,10 +26,13 @@ void PrintArray(int[,] array){
 }
 
 int[,] MatrixProduct(int[,] firstArray, int[,] secondArray){
-    int[,] result = new int [secondArray.GetLength(0), secondArray.GetLength(1)];
-    result[0,0] = firstArray[0,0] * secondArray[0,0] + firstArray[0,1] * secondArray[1,0];
-    result[0,1] = firstArray[0,0] * secondArray[0,1] + firstArray[0,1] * secondArray[1,1];
-    result[1,0] = firstArray[1,0] * secondArray[0,0] + firstArray[1,1] * secondArray[1,0];
-    result[1,1] = firstArray[1,0] * secondArray[0,1] + firstArray[1,1] * secondArray[1,1];
+    int[,] result = new int [firstArray.GetLength(0), secondArray.GetLength(1)];
+    for(int i = 0; i < firstArray.GetLength(0); i++){
+        for(int j = 0; j < secondArray.GetLength(1); j++){
+            for(int k = 0; k < firstArray.GetLength(1); k++){
+                result[i,j] += firstArray[i,k] * secondArray[k,j];
+            }
+        }
+    }    
     return result;
 }
