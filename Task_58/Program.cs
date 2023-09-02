@@ -1,10 +1,20 @@
-﻿int[,] firstArray = GetArray(2, 2, 2, 4);
-int[,] secondArray = GetArray(2, 2, 2, 4);
+﻿Console.Write("Введите число строк первой матрицы: ");
+int firstMatrixRows = int.Parse(Console.ReadLine()!);
+Console.Write("Введите число первой матрицы: ");
+int firstMatrixColumns = int.Parse(Console.ReadLine()!);
+Console.Write("Введите число строк второй матрицы: ");
+int secondMatrixRows = int.Parse(Console.ReadLine()!);
+Console.Write("Введите число столбцов второй матрицы:: ");
+int secondMatrixColumns = int.Parse(Console.ReadLine()!);
+
+int[,] firstArray = GetArray(firstMatrixRows, firstMatrixColumns, 2, 4);
+int[,] secondArray = GetArray(secondMatrixRows, secondMatrixColumns, 2, 4);
 PrintArray(firstArray);
 Console.WriteLine();
 PrintArray(secondArray);
 Console.WriteLine();
-PrintArray(MatrixProduct(firstArray, secondArray));
+if (firstMatrixColumns == secondMatrixRows) PrintArray(MatrixProduct(firstArray, secondArray));
+else Console.WriteLine("Матрицы не могуть быть перемножены.");
 
 int[,] GetArray(int rows, int columns, int minValue, int maxValue){
     int[,] result = new int[rows,columns];
